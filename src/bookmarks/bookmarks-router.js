@@ -35,11 +35,11 @@ bookmarkRouter
 
     store.bookmarks.push(bookmark);
 
-    logger.info(`Bookmark with id ${id} created`);
+    logger.info(`Bookmark with id ${bookmark.id} created`);
 
     res
       .status(201)
-      .location(`http://localhost:8000/bookmarks/${id}`)
+      .location(`http://localhost:8000/bookmarks/${bookmark.id}`)
       .json(bookmark);
   });
 
@@ -60,7 +60,7 @@ bookmarkRouter
   .delete((req, res) => {
     const { id } = req.params;
 
-    const bookmarkIndex = store.bookmarks.findIndex((c) => b.id == id);
+    const bookmarkIndex = store.bookmarks.findIndex((c) => id);
 
     if (bookmarkIndex === -1) {
       logger.error(`Bookmark with id ${id} not found.`);
